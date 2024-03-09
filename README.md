@@ -1,5 +1,49 @@
 # Gestionnaire de produits en ligne
 
+## Description
+Ce projet Nest.js comporte 2 Modules, 1 Service et 1 Middleware :
+<ul>
+    <li>
+        <u>Module Statique</u> : User
+        <ul>
+            <li>
+                Stocke les données des utilisateurs <i>(nom, prenom, email, password)</i>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <u>Module Dynamique</u> : Produit
+        <ul>
+            <li>
+                Permet de lire, créer, modifier et supprimer des produits
+            </li>
+            <li >
+                Stocke les données des produits <i>(nom, description, prix)</i>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <u>Services</u> : 
+        <ul>
+            <li>
+                <code>UserService</code>: gère la logique métier liée aux utilisateurs <i>(autorisations)</i>
+            </li>
+            <li>
+                <code>ProduitService</code>: gère la logique métier liée aux produits <i>(création, modification, suppression)</i>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <u>Middleware</u> : 
+        <ul>
+            <li>
+                Logger de requête qui détaille d'où elle vient, par qui elle a été faite.
+            </li>
+        </ul>
+    </li>
+</ul>
+
+
 ## Get started
 ### Prérequis
 <ul>
@@ -8,6 +52,7 @@
   </li>
 </ul>
 
+### Installation
 ```
 git clone https://github.com/tombruaire/gestionnaire-de-produits-nestjs
 ```

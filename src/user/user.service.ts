@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable, NotFoundException } from "@nestjs/common";
 import { User } from "./model/user";
 
 @Injectable()
@@ -28,5 +28,27 @@ export class UserService {
 
     getUsers(): Array<User> {
         return this.users;
+    }
+
+    addUser(user: User): void {
+        this.users.push(user);
+    }
+
+    editUser(id: number, nouveauUser: User): void {
+        const index = this.users.findIndex(user => user.id === id);
+        if (index !== -1) {
+            this.users[index] = { ...nouveauUser, id };
+        } else {
+            throw new NotFoundException(`User avec l'ID ${id} non trouvé.`);
+        }
+    }
+
+    deleteUser(id: number): void {
+        const index = this.users.findIndex(user => user.id === id);
+        if (index !== -1) {
+            this.users.splice(index, 1);
+        } else {
+            throw new NotFoundException(`User avec l'ID ${id} non trouvé.`);
+        }
     }
 }

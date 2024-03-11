@@ -43,6 +43,18 @@ Ce projet Nest.js comporte 2 Modules, 2 Services et 1 Middleware :
     </li>
 </ul>
 
+## Documentations
+<ul>
+    <li>
+        <a href="https://developer.mozilla.org/fr/">JavaScript</a>
+    </li>
+    <li>
+        <a href="https://www.typescriptlang.org/fr/docs/">TypeScript</a>
+    </li>
+    <li>
+        <a href="https://docs.nestjs.com/">Nest.js</a>
+    </li>
+</ul>
 
 ## Get started
 ### Prérequis

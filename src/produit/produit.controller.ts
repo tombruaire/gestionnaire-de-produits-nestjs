@@ -1,5 +1,6 @@
-import { Controller, Get, Post, Param } from "@nestjs/common";
+import { Controller, Get, Post, Param, Body, NotFoundException } from "@nestjs/common";
 import { ProduitService } from "./produit.service";
+import { Produit } from "./model/produit";
 
 @Controller() 
 export class ProduitController {
@@ -31,23 +32,49 @@ export class ProduitController {
     // Ajout d'un produit (/produit/add)
     @Post('produit/add')
     addProduct(): string {
-        return null;
+        const newProduct = { 
+            id: 1, 
+            nom: "PS5", 
+            description: "Console de jeux", 
+            prix: 500.0 
+        };
+        this.produitService.addProduit(newProduct);
+        return "Produit ajouté avec succès.";
     }
 
     // Modification d'un produit (/produit/edit/1)
     @Post('produit/edit/:id')
     editProduct(
-        @Param('id') id: number
-    ): object {
-        return null;
+        @Param('id') id: number,
+        @Body() updatedProduct: Produit
+    ): string {
+        try {
+            this.produitService.editProduit(id, updatedProduct);
+            return "Produit modifié avec succès.";
+        } catch (error) {
+            if (error instanceof NotFoundException) {
+                throw new NotFoundException(error.message);
+            } else {
+                throw error;
+            }
+        }
     }
 
     // Suppression d'un produit (/produit/delete/1)
     @Post('produit/delete/:id')
     deleteProduct(
         @Param('id') id: number
-    ): object {
-        return null;
+    ): string {
+        try {
+            this.produitService.deleteProduit(id);
+            return "Produit supprimé avec succès.";
+        } catch (error) {
+            if (error instanceof NotFoundException) {
+                throw new NotFoundException(error.message);
+            } else {
+                throw error;
+            }
+        }
     }
 
 }

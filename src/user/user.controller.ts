@@ -1,5 +1,6 @@
-import { Controller, Get, Post, Param } from "@nestjs/common";
+import { Controller, Get, Post, Param, Body, NotFoundException } from "@nestjs/common";
 import { UserService } from "./user.service";
+import { User } from "./model/user";
 
 @Controller() 
 export class UserController {
@@ -30,8 +31,51 @@ export class UserController {
 
     // Ajout d'un user
     @Post('user/add')
-    addProduct(): string {
-        return null;
+    addUser(): string {
+        const newUser = { 
+            id: 1, 
+            nom: "BRUAIRE", 
+            prenom: "Tom", 
+            email: "tom.bruaire@efrei.net",
+            password: "azerty123"
+        };
+        this.userService.addUser(newUser);
+        return "User ajouté avec succès.";
+    }
+
+    // Modification d'un user
+    @Post('user/edit/:id')
+    editUser(
+        @Param('id') id: number,
+        @Body() updatedUser: User
+    ): string {
+        try {
+            this.userService.editUser(id, updatedUser);
+            return "User modifié avec succès.";
+        } catch (error) {
+            if (error instanceof NotFoundException) {
+                throw new NotFoundException(error.message);
+            } else {
+                throw error;
+            }
+        }
+    }
+
+    // Suppression d'un user
+    @Post('user/delete/:id')
+    deleteUser(
+        @Param('id') id: number
+    ): string {
+        try {
+            this.userService.deleteUser(id);
+            return "User supprimé avec succès.";
+        } catch (error) {
+            if (error instanceof NotFoundException) {
+                throw new NotFoundException(error.message);
+            } else {
+                throw error;
+            }
+        }
     }
 
 }

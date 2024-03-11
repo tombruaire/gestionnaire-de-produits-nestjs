@@ -1,7 +1,11 @@
 import { Injectable } from "@nestjs/common";
+import { User } from "./model/user";
 
 @Injectable()
 export class UserService {
+
+    users = Array<User>();
+
     getId(): object {
         return this.getId;
     }
@@ -16,5 +20,9 @@ export class UserService {
     }
     getPassword(): object {
         return this.getPassword;
+    }
+
+    getUsers(): Array<User> {
+        return this.users;
     }
 }

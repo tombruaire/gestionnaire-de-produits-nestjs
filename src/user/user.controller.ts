@@ -9,7 +9,7 @@ export class UserController {
     // Affichage de tous les users (/users)
     @Get('users')
     getUsers(): object {
-        return this.getUsers;
+        return this.userService.getUsers();
     }
  
     // Affichage d'un user en fonction de son id (/users/1)

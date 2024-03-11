@@ -9,7 +9,7 @@ export class ProduitController {
     // Affichage de tous les produits (/produits)
     @Get('produits')
     getProducts(): object {
-        return this.getProducts();
+        return this.produitService.getProduits();
     }
  
     // Affichage d'un produit en fonction de son id (/produit/1)

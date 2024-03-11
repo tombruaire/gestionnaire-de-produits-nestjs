@@ -1,7 +1,11 @@
 import { Injectable } from "@nestjs/common";
+import { Produit } from "./model/produit";
 
 @Injectable()
 export class ProduitService {
+
+    produits = Array<Produit>();
+
     getId(): object {
         return this.getId;
     }
@@ -14,4 +18,10 @@ export class ProduitService {
     getPrix(): object {
         return this.getPrix;
     }
+
+    getProduits(): Array<Produit> {
+        return this.produits;
+    }
 }
+
+

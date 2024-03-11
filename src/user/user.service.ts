@@ -6,20 +6,24 @@ export class UserService {
 
     users = Array<User>();
 
-    getId(): object {
-        return this.getId;
+    getId(user: User): number {
+        return user.id;
     }
-    getNom(): object {
-        return this.getNom;
+
+    getNom(user: User): string {
+        return user.nom;
     }
-    getPrenom(): object {
-        return this.getPrenom;
+
+    getPrenom(user: User): string {
+        return user.prenom;
     }
-    getEmail(): object {
-        return this.getEmail;
+
+    getEmail(user: User): string {
+        return user.email;
     }
-    getPassword(): object {
-        return this.getPassword;
+
+    getPassword(user: User): string {
+        return user.password;
     }
 
     getUsers(): Array<User> {

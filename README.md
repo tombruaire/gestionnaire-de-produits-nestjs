@@ -1,7 +1,7 @@
 # Gestionnaire de produits en ligne
 
 ## Description
-Ce projet Nest.js comporte 2 Modules, 1 Service et 1 Middleware :
+Ce projet Nest.js comporte 2 Modules, 2 Services et 1 Middleware :
 <ul>
     <li>
         <u>Module Statique</u> : User
